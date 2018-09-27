@@ -7,9 +7,11 @@ const mongoose = require('mongoose');
 const UserRoutes = require('./api/routes/users');
 const ProfileRoutes = require('./api/routes/profile');
 const ComponentsRoutes = require('./api/routes/components');
+const ProductRoutes = require('./api/routes/products');
+const OrderRoutes = require('./api/routes/orders');
 
-// mongoose.connect('mongodb+srv://ravindra:ravindra@cluster0-z3qmt.mongodb.net/test?retryWrites=true', (err) => {
-    mongoose.connect('mongodb+srv://ravindra:ravindra@cluster0-z3qmt.mongodb.net/test?retryWrites=true', (err) => { 
+// mongoose.connect('mongodb://localhost:27017/NodeAngular', (err) => { 
+mongoose.connect('mongodb+srv://ravindra:ravindra@cluster0-z3qmt.mongodb.net/test?retryWrites=true', (err) => { 
     if(!err) 
         console.log('MongoDB connection succeeded.');
      else 
@@ -37,6 +39,8 @@ app.use((req, res, next) => {
 app.use('/user', UserRoutes);
 app.use('/profile', ProfileRoutes);
 app.use('/basicAPI', ComponentsRoutes);
+app.use('/products', ProductRoutes);
+app.use('/orders', OrderRoutes);
 
 app.use((req, res, next) => {
     const error = new Error('Not Found');
